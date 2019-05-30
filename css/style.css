@@ -1,0 +1,22 @@
+#content, #authorize-button, #signout-button {
+    display: none;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: red !important;
+}
+
+  /* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid red !important;
+    box-shadow: 0 1px 0 0 red !important
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: tomato;
+}
+
+ul.dropdown-content.select-dropdown li.disabled span{
+    color: grey;
+}

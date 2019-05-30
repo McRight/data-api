@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data API</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <nav class="red">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="#!" class="brand-logo">Some Channel's Info</a>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <section>
+        <div class="container">
+            <p>Log In With Google</p>
+            <button class="btn red waves-effect waves-red" id="authorize-button">Log In</button>
+            <button class="btn red waves-effect waves-red" id="signout-button">Log Out</button>
+            <br>
+            <div id="content">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <div class="input-field col l10 s12">
+                            <select id="channel-choice-select">
+                                <option value="" disabled>Choose your option</option>
+                                <option value="1" selected>Name</option>
+                                <option value="2">Id</option>
+                            </select>
+                            <label>Find channel by</label>
+                        </div>
+                        <form action="" id="channel-form">
+                            <div class="input-field col l10 s12">
+                                <label>Enter channel Name / Id</label>
+                                <input type="text" placeholder="googledevelopers" id="channel-input">
+                                <input type="submit" value="Get Channel Data" class="btn red lighten-2 waves-effect waves-red">
+                            </div>
+                        </form>
+                    </div>
+                    <div id="channel-data" class="col l6 s12"></div>
+                </div>
+                <div class="row" id="video-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="https://apis.google.com/js/api.js" onload="handleClientLoad()">
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+
+<!-- onreadystatechange="if (this.readyState === 'complete') this.onload()" -->
+
+
+    <!-- <script>
+    /**
+     * Sample JavaScript code for youtube.channels.list
+     * See instructions for running APIs Explorer code samples locally:
+     * https://developers.google.com/explorer-help/guides/code_samples#javascript
+     */
+
+    function authenticate() {
+        return gapi.auth2.getAuthInstance()
+            .signIn({scope: "https://www.googleapis.com/auth/youtube.readonly"})
+            .then(function() { console.log("Sign-in successful"); },
+                function(err) { console.error("Error signing in", err); });
+    }
+    function loadClient() {
+        gapi.client.setApiKey("AIzaSyBSZCLJbGFl3jtla09Ja5EJNbvNZyIfao8");
+        return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+            .then(function() { console.log("GAPI client loaded for API"); },
+                function(err) { console.error("Error loading GAPI client for API", err); });
+    }
+    // Make sure the client is loaded and sign-in is complete before calling this method.
+    function execute() {
+        return gapi.client.youtube.channels.list({
+        "part": "snippet,contentDetails,statistics",
+        "mine": true
+        })
+            .then(function(response) {
+                    // Handle the results here (response.result has the parsed body).
+                    console.log("Response", response);
+                },
+                function(err) { console.error("Execute error", err); });
+    }
+    gapi.load("client:auth2", function() {
+        gapi.auth2.init({client_id: "575255145525-avuuiq8ej78f8l6btafsvst1uifkg1im.apps.googleusercontent.com"});
+    });
+    </script>
+    <button onclick="authenticate().then(loadClient)">authorize and load</button>
+    <button onclick="execute()">execute</button> -->
+
+</body>
+</html>
